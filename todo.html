@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TodoJS</title>
+</head>
+<body>
+	<h1>TodoJS</h1>
+	<form>
+		<input id="todo-input" type="text" name="todo">
+		<button id="submit-btn" type="button">提交</button>
+	</form>
+	<ul id="result"></ul>
+	<script type="text/javascript">
+		var submitbtn = document.getElementById('submit-btn');
+		var result = document.getElementById('result');
+		submitbtn.addEventListener('click',function(e){
+			var todoin = document.getElementById('todo-input').value;
+
+			console.log(todoin);
+			if(todoin != ''){
+				var todo = document.createElement('Li');
+				todo.innerHTML = todoin + '<button>X</button>'; 
+				result.appendChild(todo);
+				document.getElementById('todo-input').value = '' ;
+			}else{
+				alert('請輸入');
+			}
+		});
+
+		result.addEventListener('click',function(e){
+			console.log(e.target.parentNode.parentNode);
+			console.log(e.target.parentNode);
+			console.log(e.target);
+			
+			e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+		});
+	</script>
+</body>
+</html>
